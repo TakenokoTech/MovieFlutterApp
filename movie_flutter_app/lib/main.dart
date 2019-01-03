@@ -4,7 +4,6 @@ import 'view/VideoView.dart';
 // void main() => runApp(MyApp());
 void main() => runApp(VideoApp());
 
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override

@@ -18,23 +18,31 @@ class _VideoAppState extends State<VideoApp> {
 
   @override
   void initState() {
+    debugPrint('VideoApp.initState');
     super.initState();
 //    _controller = VideoPlayerController.network(
 //      'http://10.0.2.2:3000/1.mp4',
 //    );
+    _controller = VideoPlayerController.network(
+      'http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8',
+    );
     _controller = VideoPlayerController.asset(
       'assets/1.mp4',
+      //'tech.takenoko.movieflutterapp',
     );
     _controller.addListener(() {
-        debugPrint('addListener');
-        final bool isPlaying = _controller.value.isPlaying;
-        if (isPlaying != _isPlaying) {
-          setState(() {
-            _isPlaying = isPlaying;
-          });
-        }
-      });
-    _controller.initialize();
+      final bool isPlaying = _controller.value.isPlaying;
+      if (isPlaying != _isPlaying) {
+        setState(() {
+          _isPlaying = isPlaying;
+        });
+      }
+    });
+    try {
+      _controller.initialize();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
 
 //      ..initialize().then((_) {
 //        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
@@ -44,6 +52,7 @@ class _VideoAppState extends State<VideoApp> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('VideoApp.build');
     return MaterialApp(
       title: 'Video Demo',
       home: Scaffold(

@@ -7,7 +7,7 @@
         "movie_flutter_app/pubspec.lock": true,
         "movie_flutter_app/local.properties": true,
         "movie_flutter_app/*.iml": true,
-        "movie_flutter_app/android/**": true,
+        // "movie_flutter_app/android/**": true,
         "movie_flutter_app/build/**": true,
         "movie_flutter_app/ios/**": true,
         "movie_flutter_server/node_modules/**": true
