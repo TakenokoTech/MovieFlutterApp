@@ -1,16 +1,17 @@
 {
-    "files.exclude": {
-        "movie_flutter_app/.idea/**": true,
-        "movie_flutter_app/.flutter-plugins": true,
-        "movie_flutter_app/.metadata": true,
-        "movie_flutter_app/.packages": true,
-        "movie_flutter_app/pubspec.lock": true,
-        "movie_flutter_app/local.properties": true,
-        "movie_flutter_app/*.iml": true,
-        // "movie_flutter_app/android/**": true,
-        "movie_flutter_app/build/**": true,
-        "movie_flutter_app/ios/**": true,
-        "movie_flutter_server/node_modules/**": true
+	"files.exclude": {
+		"movie_flutter_app/.idea/**": true,
+		"movie_flutter_app/.flutter-plugins": true,
+		"movie_flutter_app/.metadata": true,
+		"movie_flutter_app/.packages": true,
+		"movie_flutter_app/pubspec.lock": true,
+		"movie_flutter_app/local.properties": true,
+		"movie_flutter_app/*.iml": true,
+		// "movie_flutter_app/android/**": true,
+		"movie_flutter_app/build/**": true,
+		"movie_flutter_app/ios/**": true,
+		"movie_flutter_server/node_modules/**": true,
+		"**/*.meta": true
 	},
 	"editor.formatOnSave": true
 }
