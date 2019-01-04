@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  
+  container_rtmp:
+    image: rtmp
+    container_name: rtmp
+    build:
+      context: .docker/rtmp
+      dockerfile: Dockerfile
+    ports:
+      - "1935:1935"
+
+  container_node:
+    image: node
+    container_name: node
+    build: 
+      context: .docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - ./movie_flutter_server:/app
+    ports:
+      - "8080:3000"
+    tty: true
+    command: [sh, -c, npm install && npm start]

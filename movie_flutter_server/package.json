@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "connect": "^3.6.6",
+    "express": "^4.16.4",
+    "hls-server": "^1.5.0",
     "serve-static": "^1.13.2"
   }
 }

@@ -11,5 +11,6 @@
         "movie_flutter_app/build/**": true,
         "movie_flutter_app/ios/**": true,
         "movie_flutter_server/node_modules/**": true
-    }
+	},
+	"editor.formatOnSave": true
 }
