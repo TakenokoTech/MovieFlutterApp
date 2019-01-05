@@ -1,0 +1,68 @@
+@startuml
+
+artifact "movie_flutter_app   " {
+	frame "Flutter" {
+		[video_player]
+	}
+}
+
+artifact "movie_flutter_web   " {
+	frame "HTML" {
+		[videojs]
+	}
+}
+
+artifact "movie_flutter_server   " {
+	frame "nginx" {
+		[nginx-rtmp]
+	}
+	frame "node" {
+		[express]
+	}
+	database "Database" {
+		[store]
+	}
+}
+
+node "movie_flutter_obs" {
+	frame "obs" {
+		[custom-stream]
+	}
+}
+
+artifact "movie_flutter_unity_server   " {
+	frame "node-grpc" {
+		[grpc]
+	}
+	frame "unity(main)" {
+		[renderVRM]
+	}
+	database "Radis" {
+		[session]
+	}
+}
+
+artifact "movie_flutter_unity_client(1)   " {
+	frame "unity(sub1)" {
+		[VirtualMotionCapture(1)]
+	}
+}
+
+artifact "movie_flutter_unity_client(2)   " {
+	frame "unity(sub2)" {
+		[VirtualMotionCapture(2)]
+	}
+}
+
+[video_player] .. [nginx-rtmp] : RTMP
+[videojs] .. [nginx-rtmp] : RTMP
+[videojs] .. [express] : HTTP
+[express] .. [store] : UDP
+[nginx-rtmp] .. [custom-stream] : RTMP
+[custom-stream] .. [renderVRM] : Capture
+[renderVRM] .. [grpc] : gRPC
+[session] .. [grpc] : pub/sub
+[VirtualMotionCapture(1)] .. [grpc] : gRPC
+[VirtualMotionCapture(2)] .. [grpc] : gRPC
+
+@enduml
