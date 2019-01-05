@@ -1,12 +1,11 @@
-version: '3'
+version: "3"
 
 services:
-  
   container_rtmp:
     image: rtmp
     container_name: rtmp
     build:
-      context: .docker/rtmp
+      context: ./rtmp
       dockerfile: Dockerfile
     ports:
       - "1935:1935"
@@ -14,11 +13,11 @@ services:
   container_node:
     image: node
     container_name: node
-    build: 
-      context: .docker/node
+    build:
+      context: ./node
       dockerfile: Dockerfile
     volumes:
-      - ./movie_flutter_server:/app
+      - ../movie_flutter_server:/app
     ports:
       - "8080:3000"
     tty: true

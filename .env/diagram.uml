@@ -1,40 +1,40 @@
 @startuml
 
-artifact "movie_flutter_app   " {
-	frame "Flutter" {
+artifact "   Native App   " {
+	frame "Flutter " {
 		[video_player]
 	}
 }
 
-artifact "movie_flutter_web   " {
-	frame "HTML" {
+artifact "   Web   " {
+	frame "HTML " {
 		[videojs]
 	}
 }
 
-artifact "movie_flutter_server   " {
-	frame "nginx" {
+artifact "   Node Server   " {
+	frame "nginx " {
 		[nginx-rtmp]
 	}
-	frame "node" {
+	frame "node " {
 		[express]
 	}
-	database "Database" {
+	database " Database " {
 		[store]
 	}
 }
 
-node "movie_flutter_obs" {
-	frame "obs" {
+node "        OBS        " {
+	frame "obs " {
 		[custom-stream]
 	}
 }
 
-artifact "movie_flutter_unity_server   " {
-	frame "node-grpc" {
+artifact "   Unity Server   " {
+	frame "node-grpc " {
 		[grpc]
 	}
-	frame "unity(main)" {
+	frame "unity(main) " {
 		[renderVRM]
 	}
 	database "Radis" {
@@ -42,14 +42,14 @@ artifact "movie_flutter_unity_server   " {
 	}
 }
 
-artifact "movie_flutter_unity_client(1)   " {
-	frame "unity(sub1)" {
+artifact "   Unity Client(1)   " {
+	frame "unity(sub1) " {
 		[VirtualMotionCapture(1)]
 	}
 }
 
-artifact "movie_flutter_unity_client(2)   " {
-	frame "unity(sub2)" {
+artifact "   Unity Client(2)   " {
+	frame "unity(sub2) " {
 		[VirtualMotionCapture(2)]
 	}
 }
