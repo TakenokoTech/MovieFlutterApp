@@ -1,0 +1,31 @@
+body {
+    -webkit-app-region: drag;
+    -webkit-user-select: none;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    background: #ff00ff;
+    color: white;
+    font-family: sans-serif;
+}
+
+#content {
+    position: relative;
+}
+
+#logo {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+}
+
+#live {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    font-size: 60px;
+    background-color: red;
+    padding: 8px 16px;
+    font-family: "Courier";
+}

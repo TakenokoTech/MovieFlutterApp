@@ -1,0 +1,6 @@
+{
+    "main": "main.js",
+    "dependencies": {
+        "electron-log": "^2.2.17"
+    }
+}
