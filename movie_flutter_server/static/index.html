@@ -39,6 +39,7 @@
             <a class="navbar-brand" href="#">RTMP Broadcast</a>
         </nav>
         <div class="container">
+            <br />
             <div id="content_video" class="mx-auto">
                 <video
                     class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
@@ -62,6 +63,16 @@
                         >
                     </p>
                 </video>
+            </div>
+        </div>
+        <div class="container">
+            <div id="status">
+                <h2>Status</h2>
+                <iframe
+                    src="http://192.168.99.100:9090/stat"
+                    name="stat"
+                    frameborder="0"
+                ></iframe>
             </div>
         </div>
     </body>

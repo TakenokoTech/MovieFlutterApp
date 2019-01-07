@@ -1,11 +1,6 @@
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
-
-//Logger.root.level = Level.ALL;
-//Logger.root.onRecord.listen((LogRecord rec) {
-//  print('${rec.level.name}: ${rec.time}: ${rec.message}');
-//});
-//final Logger log = new Logger('VideoApp');
+import '../utils/AppLog.dart';
 
 class VideoApp extends StatefulWidget {
   @override
@@ -18,60 +13,76 @@ class _VideoAppState extends State<VideoApp> {
 
   @override
   void initState() {
-    debugPrint('VideoApp.initState');
+    AppLog.debug('VideoApp.initState');
     super.initState();
-//    _controller = VideoPlayerController.network(
-//      'http://10.0.2.2:3000/1.mp4',
-//    );
-    _controller = VideoPlayerController.network(
-      'http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8',
-    );
-    _controller = VideoPlayerController.asset(
-      'assets/1.mp4',
-      //'tech.takenoko.movieflutterapp',
-    );
-    _controller.addListener(() {
-      final bool isPlaying = _controller.value.isPlaying;
-      if (isPlaying != _isPlaying) {
-        setState(() {
-          _isPlaying = isPlaying;
-        });
-      }
-    });
-    try {
-      _controller.initialize();
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-
-//      ..initialize().then((_) {
-//        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-//        setState(() {});
-//      });
+    _controller = network('http://192.168.99.100:9090/live/test.m3u8')
+      ..addListener(calback)
+      ..initialize().then((_) {
+        _controller.play();
+        setState(() {});
+      });
   }
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('VideoApp.build');
+    AppLog.debug('VideoApp.build');
     return MaterialApp(
       title: 'Video Demo',
       home: Scaffold(
-        body: Center(
-          child: _controller.value.initialized
-              ? AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: VideoPlayer(_controller),
-                )
-              : Container(),
+        appBar: appBar(),
+        body: new Container(
+          decoration: new BoxDecoration(color: Colors.white70),
+          child: Center(
+              child:
+                  _controller.value.initialized ? aspectRatio() : Container()),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _controller.value.isPlaying
-              ? _controller.pause
-              : _controller.play,
-          child: Icon(
-              _controller.value.isPlaying ? Icons.pause : Icons.play_arrow),
-        ),
+//        floatingActionButton: floatingActionButton(),
       ),
     );
+  }
+
+  AppBar appBar() {
+    return AppBar(
+      title: Text("Real Time Movie"),
+    );
+  }
+
+  AspectRatio aspectRatio() {
+    return AspectRatio(
+      aspectRatio: _controller.value.aspectRatio,
+      child: VideoPlayer(_controller),
+    );
+  }
+
+  FloatingActionButton floatingActionButton() {
+    return FloatingActionButton(
+      onPressed:
+          _controller.value.isPlaying ? _controller.pause : _controller.play,
+      child: Icon(_controller.value.isPlaying ? Icons.pause : Icons.play_arrow),
+    );
+  }
+
+  VideoPlayerController network(String path) {
+    AppLog.debug('VideoApp.network');
+    return VideoPlayerController.network(
+      path,
+    );
+  }
+
+  VideoPlayerController asset(String path) {
+    AppLog.debug('VideoApp.asset');
+    return VideoPlayerController.asset(
+      path,
+    );
+  }
+
+  VoidCallback calback() {
+    // AppLog.debug('VideoApp.calback');
+    final bool isPlaying = _controller.value.isPlaying;
+    if (isPlaying != _isPlaying) {
+      setState(() {
+        _isPlaying = isPlaying;
+      });
+    }
   }
 }

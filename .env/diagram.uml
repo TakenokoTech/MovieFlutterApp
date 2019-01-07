@@ -54,7 +54,7 @@ artifact "   Unity Client(2)   " {
 	}
 }
 
-[video_player] .. [nginx-rtmp] : RTMP
+[video_player] .. [nginx-rtmp] : HLS
 [videojs] .. [nginx-rtmp] : RTMP
 [videojs] .. [express] : HTTP
 [express] .. [store] : UDP

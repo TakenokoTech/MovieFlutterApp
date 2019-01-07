@@ -9,6 +9,7 @@ services:
             dockerfile: Dockerfile
         ports:
             - "1935:1935"
+            - "9090:9090"
 
     container_node:
         image: node

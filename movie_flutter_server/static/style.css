@@ -1,9 +1,24 @@
 #content_video {
-	/* align-content: center;
+    /* align-content: center;
 	min-width:100%;
     min-height:100%;
     z-index:-100;
     position: relative;
     top: 50%;
     transform: translateY(-50%); */
+}
+
+#status {
+    position: relative;
+    width: 100%;
+    padding: 32px 0 0 0;
+    height: 500px;
+}
+
+#status iframe {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
